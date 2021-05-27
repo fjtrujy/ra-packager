@@ -4,7 +4,7 @@
 # Copy from core folder to Ra
 cp $1/$2.a RetroArch/libretro_ps2.a || { exit 1; }
 
-cd Retroarch || { exit 1; }
+cd RetroArch || { exit 1; }
 
 ## Compile core
 make -f Makefile.ps2 release || { exit 1; }
