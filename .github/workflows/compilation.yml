@@ -35,6 +35,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: RA
-        path: |
-          RetroArch/retroarchps2.elf
-          RetroArch/raboot.elf
+        path: RA/
