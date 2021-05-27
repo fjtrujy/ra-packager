@@ -18,7 +18,8 @@ jobs:
         docker_owner: [ps2dev, fjtrujy]
         core_opts: [
           [libretro-prboom, prboom_libretro_ps2],
-          [libretro-samples, test_libretro_ps2]
+          [libretro-samples, test_libretro_ps2],
+          [picodrive, picodrive_libretro_ps2],
          ]
 
     container: ${{ matrix.docker_owner }}/ps2dev:latest
@@ -33,7 +34,7 @@ jobs:
       run: |
         ./prepare_release.sh
         ./prepare_retroarch.sh
-        ./${{ matrix.core_opts[0] }}.sh
+        ./cores/${{ matrix.core_opts[0] }}.sh
         ./generate_retroarch.sh ${{ matrix.core_opts[0] }} ${{ matrix.core_opts[1] }}
 
     - name: Get short SHA
