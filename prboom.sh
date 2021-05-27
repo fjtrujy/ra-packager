@@ -21,3 +21,5 @@ make -j $PROC_NR platform=ps2 || { exit 1; }
 
 ## Copy core
 cp prboom_libretro_ps2.a ../libretro_ps2.a || { exit 1; }
+
+cd .. || { exit 1; }
