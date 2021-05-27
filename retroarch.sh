@@ -20,3 +20,5 @@ cp ../libretro_ps2.a libretro_ps2.a || { exit 1; }
 ## Compile core
 make -f Makefile.ps2 release || { exit 1; }
 
+## Compile RABOOT
+make -f Makefile.ps2.salamander release

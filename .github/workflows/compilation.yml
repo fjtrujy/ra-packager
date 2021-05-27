@@ -34,5 +34,7 @@ jobs:
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
       with:
-        name: retroarchps2.elf
-        path: retroarch/retroarchps2.elf
+        name: RA
+        path: |
+          RetroArch/retroarchps2.elf
+          RetroArch/raboot.elf
