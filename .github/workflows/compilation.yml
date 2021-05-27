@@ -11,9 +11,18 @@ on:
     types: [run_build]
 
 jobs:
-  build:
+  cores:
     runs-on: ubuntu-latest
-    container: fjtrujy/ps2dev:latest
+    strategy:
+      matrix:
+        docker_owner: [ps2dev, fjtrujy]
+        core_opts: [
+          [libretro-prboom, prboom_libretro_ps2],
+          [libretro-samples, test_libretro_ps2],
+          [picodrive, picodrive_libretro_ps2],
+         ]
+
+    container: ${{ matrix.docker_owner }}/ps2dev:latest
     steps:
     - uses: actions/checkout@v2
 
@@ -21,10 +30,12 @@ jobs:
       run: |
         apk add build-base git bash
     
-
     - name: Compile project
       run: |
-        ./package.sh
+        ./prepare_release.sh
+        ./prepare_retroarch.sh
+        ./cores/${{ matrix.core_opts[0] }}.sh
+        ./generate_retroarch.sh ${{ matrix.core_opts[0] }} ${{ matrix.core_opts[1] }}
 
     - name: Get short SHA
       id: slug
@@ -34,5 +45,65 @@ jobs:
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
       with:
-        name: RA
+        name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
         path: RA/
+
+
+  libretro-salamander:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        docker_owner: [ps2dev, fjtrujy]
+
+    container: ${{ matrix.docker_owner }}/ps2dev:latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        apk add build-base git bash
+    
+    - name: Compile project
+      run: |
+        ./prepare_release.sh
+        ./prepare_retroarch.sh
+        ./generate_salamander.sh
+
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
+    - name: Upload artifacts
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
+        path: RA/
+
+
+  libretro-info-core:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        docker_owner: [ps2dev, fjtrujy]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Compile project
+      run: |
+        ./prepare_release.sh
+        ./libretro-core-info.sh
+
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
+    - name: Upload artifacts
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
+        path: RA/
+
+    
