@@ -11,7 +11,7 @@ on:
     types: [run_build]
 
 jobs:
-  build:
+  libretro-prboom:
     runs-on: ubuntu-latest
     container: fjtrujy/ps2dev:latest
     steps:
@@ -24,7 +24,10 @@ jobs:
 
     - name: Compile project
       run: |
-        ./package.sh
+        ./prepare_release.sh
+        ./prepare_retroarch.sh
+        ./libretro-prboom.sh
+        ./generate_retroarch.sh libretro-prboom prboom_libretro_ps2
 
     - name: Get short SHA
       id: slug
@@ -36,3 +39,84 @@ jobs:
       with:
         name: RA
         path: RA/
+  
+
+  libretro-samples:
+    runs-on: ubuntu-latest
+    container: fjtrujy/ps2dev:latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        apk add build-base git bash
+    
+    - name: Compile project
+      run: |
+        ./prepare_release.sh
+        ./prepare_retroarch.sh
+        ./libretro-samples.sh
+        ./generate_retroarch.sh libretro-samples test_libretro_ps2
+
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
+    - name: Upload artifacts
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: RA
+        path: RA/
+    
+
+  libretro-salamander:
+    runs-on: ubuntu-latest
+    container: fjtrujy/ps2dev:latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        apk add build-base git bash
+    
+    - name: Compile project
+      run: |
+        ./prepare_release.sh
+        ./prepare_retroarch.sh
+        ./generate_salamander.sh
+
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
+    - name: Upload artifacts
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: RA
+        path: RA/
+
+
+  libretro-info-core:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Compile project
+      run: |
+        ./prepare_release.sh
+        ./libretro-core-info.sh
+
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
+    - name: Upload artifacts
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: RA
+        path: RA/
+
+    
