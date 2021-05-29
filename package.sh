@@ -17,6 +17,10 @@
 ./cores/picodrive.sh || { exit 1; }
 ./generate_retroarch.sh picodrive picodrive_libretro_ps2 || { exit 1; }
 
+#ecwolf
+./cores/ecwolf.sh || { exit 1; }
+./generate_retroarch.sh ecwolf ecwolf_libretro_ps2 || { exit 1; }
+
 ## Copy info folder
 ./libretro-core-info.sh || { exit 1; }
 
