@@ -7,11 +7,16 @@ PROC_NR=$(getconf _NPROCESSORS_ONLN)
 ## Download the source code.
 REPO_URL="https://github.com/fjtrujy/RetroArch.git"
 REPO_FOLDER="RetroArch"
-BRANCH_NAME="ps2/change_res"
+BRANCH_NAME="psp-nothread"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
 else
 	cd $REPO_FOLDER && git fetch origin && git reset --hard origin/${BRANCH_NAME} && git checkout ${BRANCH_NAME} || { exit 1; }
 fi
+
+# Bootstrap
+cd bootstrap/psp1/kernel_functions_prx || { exit 1; }
+make clean all || { exit 1; }
+cd ../../../ || { exit 1; }
 
 cd .. || { exit 1; }

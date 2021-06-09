@@ -15,7 +15,7 @@ else
 fi
 
 ## Compile core
-make -f Makefile.libretro -j $PROC_NR platform=ps2 clean || { exit 1; }
-make -f Makefile.libretro  -j $PROC_NR platform=ps2 || { exit 1; }
+make -f Makefile.libretro -j $PROC_NR platform=psp1 clean || { exit 1; }
+make -f Makefile.libretro  -j $PROC_NR platform=psp1 || { exit 1; }
 
 cd .. || { exit 1; }

@@ -16,10 +16,10 @@ fi
 
 ## Compile core
 cd tests/test/ || { exit 1; }
-make -j $PROC_NR platform=ps2 clean  || { exit 1; }
-make -j $PROC_NR platform=ps2 || { exit 1; }
+make -j $PROC_NR platform=psp1 clean  || { exit 1; }
+make -j $PROC_NR platform=psp1 || { exit 1; }
 
 # Trick needed for having subfolders
-cp test_libretro_ps2.a ../../test_libretro_ps2.a
+cp test_libretro_psp1.a ../../test_libretro_psp1.a
 
 cd ../../../ || { exit 1; }

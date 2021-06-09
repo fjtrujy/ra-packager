@@ -15,19 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [ps2dev, fjtrujy]
+        docker_owner: [pspdev, fjtrujy]
         core_opts: [
-          [libretro-prboom, prboom_libretro_ps2],
-          [libretro-samples, test_libretro_ps2],
-          [picodrive, picodrive_libretro_ps2],
-          [ecwolf, ecwolf_libretro_ps2],
-          [snes9x2002, snes9x2002_libretro_ps2],
-          [libretro-lutro, lutro_libretro_ps2],
-          [gpsp, gpsp_libretro_ps2],
-          [libretro-fceumm, fceumm_libretro_ps2],
+          [libretro-prboom, prboom_libretro_psp1],
+          [libretro-samples, test_libretro_psp1],
+          [picodrive, picodrive_libretro_psp1],
+          [ecwolf, ecwolf_libretro_psp1],
+          [snes9x2002, snes9x2002_libretro_psp1],
+          [libretro-lutro, lutro_libretro_psp1],
+          [gpsp, gpsp_libretro_psp1],
+          [libretro-fceumm, fceumm_libretro_psp1],
          ]
 
-    container: ${{ matrix.docker_owner }}/ps2dev:latest
+    container: ${{ matrix.docker_owner }}/pspsdk:latest
     steps:
     - uses: actions/checkout@v2
 
@@ -58,9 +58,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [ps2dev, fjtrujy]
+        docker_owner: [pspdev, fjtrujy]
 
-    container: ${{ matrix.docker_owner }}/ps2dev:latest
+    container: ${{ matrix.docker_owner }}/pspsdk:latest
     steps:
     - uses: actions/checkout@v2
 
@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [ps2dev, fjtrujy]
+        docker_owner: [pspdev, fjtrujy]
 
     steps:
     - uses: actions/checkout@v2

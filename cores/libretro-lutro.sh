@@ -5,9 +5,9 @@
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
 ## Download the source code.
-REPO_URL="https://github.com/libretro/libretro-lutro"
+REPO_URL="https://github.com/fjtrujy/libretro-lutro"
 REPO_FOLDER="libretro-lutro"
-BRANCH_NAME="master"
+BRANCH_NAME="psp"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --recurse-submodules --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
 else
@@ -15,7 +15,7 @@ else
 fi
 
 ## Compile core
-make -j $PROC_NR platform=ps2 clean || { exit 1; }
-make -j $PROC_NR platform=ps2 || { exit 1; }
+make -j $PROC_NR platform=psp1 clean || { exit 1; }
+make -j $PROC_NR platform=psp1 || { exit 1; }
 
 cd .. || { exit 1; }

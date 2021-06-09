@@ -4,6 +4,7 @@
 cd RetroArch || { exit 1; }
 
 ## Compile RABOOT
-make -f Makefile.ps2.salamander release || { exit 1; }
-cp raboot.elf ../RA/raboot.elf || { exit 1; }
+make -f Makefile.psp1.salamander clean all || { exit 1; }
+cp EBOOT.PBP ../RA/EBOOT.PBP || { exit 1; }
+cp PARAM.SFO ../RA/PARAM.SFO || { exit 1; }
 cd .. || { exit 1; }

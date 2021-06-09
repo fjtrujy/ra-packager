@@ -16,10 +16,10 @@ fi
 
 ## Compile core
 cd src/libretro || { exit 1; }
-make -j $PROC_NR platform=ps2 clean || { exit 1; }
-make -j $PROC_NR platform=ps2 || { exit 1; }
+make -j $PROC_NR platform=psp1 clean || { exit 1; }
+make -j $PROC_NR platform=psp1 || { exit 1; }
 
 # Trick needed for having subfolders
-cp ecwolf_libretro_ps2.a ../../ecwolf_libretro_ps2.a
+cp ecwolf_libretro_psp1.a ../../ecwolf_libretro_psp1.a
 
 cd ../../../ || { exit 1; }
