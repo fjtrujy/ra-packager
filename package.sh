@@ -17,6 +17,10 @@
 ./cores/picodrive.sh || { exit 1; }
 ./generate_retroarch.sh picodrive picodrive_libretro_ps2 || { exit 1; }
 
+#libretro-lutro
+./cores/libretro-lutro.sh || { exit 1; }
+./generate_retroarch.sh libretro-lutro lutro_libretro_ps2 || { exit 1; }
+
 ## Copy info folder
 ./libretro-core-info.sh || { exit 1; }
 
