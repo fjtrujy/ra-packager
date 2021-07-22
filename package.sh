@@ -21,6 +21,10 @@
 ./cores/libretro-lutro.sh || { exit 1; }
 ./generate_retroarch.sh libretro-lutro lutro_libretro_ps2 || { exit 1; }
 
+#gpsp
+./cores/gpsp.sh || { exit 1; }
+./generate_retroarch.sh gpsp gpsp_libretro_ps2 || { exit 1; }
+
 ## Copy info folder
 ./libretro-core-info.sh || { exit 1; }
 
