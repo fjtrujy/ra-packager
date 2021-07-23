@@ -5,9 +5,9 @@
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
 ## Download the source code.
-REPO_URL="https://github.com/fjtrujy/libretro-lutro"
+REPO_URL="https://github.com/libretro/libretro-lutro"
 REPO_FOLDER="libretro-lutro"
-BRANCH_NAME="ps2"
+BRANCH_NAME="master"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --recurse-submodules --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
 else
