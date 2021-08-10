@@ -22,6 +22,7 @@ jobs:
           [picodrive, picodrive_libretro_ps2],
           [libretro-lutro, lutro_libretro_ps2],
           [gpsp, gpsp_libretro_ps2],
+          [libretro-fceumm, fceumm_libretro_ps2],
          ]
 
     container: ${{ matrix.docker_owner }}/ps2dev:latest

@@ -25,6 +25,10 @@
 ./cores/gpsp.sh || { exit 1; }
 ./generate_retroarch.sh gpsp gpsp_libretro_ps2 || { exit 1; }
 
+# libretro-fceumm
+./cores/libretro-fceumm.sh || { exit 1; }
+./generate_retroarch.sh libretro-fceumm fceumm_libretro_ps2 || { exit 1; }
+
 ## Copy info folder
 ./libretro-core-info.sh || { exit 1; }
 
