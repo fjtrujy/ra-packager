@@ -7,7 +7,7 @@ PROC_NR=$(getconf _NPROCESSORS_ONLN)
 ## Download the source code.
 REPO_URL="https://github.com/fjtrujy/RetroArch.git"
 REPO_FOLDER="RetroArch"
-BRANCH_NAME="ps2_aspect_ratio"
+BRANCH_NAME="ps2/HDD-v2"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
 else
