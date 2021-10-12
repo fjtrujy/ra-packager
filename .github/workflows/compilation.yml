@@ -15,19 +15,20 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [pspdev, fjtrujy]
+        docker_owner: [orbisdev, orbisdev]
         core_opts: [
-          [libretro-prboom, prboom_libretro_psp1],
-          [libretro-samples, test_libretro_psp1],
-          [picodrive, picodrive_libretro_psp1],
-          [ecwolf, ecwolf_libretro_psp1],
-          [snes9x2002, snes9x2002_libretro_psp1],
-          [libretro-lutro, lutro_libretro_psp1],
-          [gpsp, gpsp_libretro_psp1],
-          [libretro-fceumm, fceumm_libretro_psp1],
+          [gambatte-libretro, gambatte_libretro_orbis],
+          # [libretro-prboom, prboom_libretro_psp1],
+          # [libretro-samples, test_libretro_psp1],
+          # [picodrive, picodrive_libretro_psp1],
+          # [ecwolf, ecwolf_libretro_psp1],
+          # [snes9x2002, snes9x2002_libretro_psp1],
+          # [libretro-lutro, lutro_libretro_psp1],
+          # [gpsp, gpsp_libretro_psp1],
+          # [libretro-fceumm, fceumm_libretro_psp1],
          ]
 
-    container: ${{ matrix.docker_owner }}/pspsdk:latest
+    container: ${{ matrix.docker_owner }}/orbisdev:latest
     steps:
     - uses: actions/checkout@v2
 
@@ -54,43 +55,43 @@ jobs:
         path: RA/
 
 
-  libretro-salamander:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        docker_owner: [pspdev, fjtrujy]
+  # libretro-salamander:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       docker_owner: [orbisdev, orbisdev]
 
-    container: ${{ matrix.docker_owner }}/pspsdk:latest
-    steps:
-    - uses: actions/checkout@v2
+  #   container: ${{ matrix.docker_owner }}/orbisdev:latest
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: |
-        apk add build-base git bash
+  #   - name: Install dependencies
+  #     run: |
+  #       apk add build-base git bash
     
-    - name: Compile project
-      run: |
-        ./prepare_release.sh
-        ./prepare_retroarch.sh
-        ./generate_salamander.sh
+  #   - name: Compile project
+  #     run: |
+  #       ./prepare_release.sh
+  #       ./prepare_retroarch.sh
+  #       ./generate_salamander.sh
 
-    - name: Get short SHA
-      id: slug
-      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+  #   - name: Get short SHA
+  #     id: slug
+  #     run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
 
-    - name: Upload artifacts
-      if: ${{ success() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
-        path: RA/
+  #   - name: Upload artifacts
+  #     if: ${{ success() }}
+  #     uses: actions/upload-artifact@v2
+  #     with:
+  #       name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
+  #       path: RA/
 
 
   libretro-info-core:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [pspdev, fjtrujy]
+        docker_owner: [orbisdev, orbisdev]
 
     steps:
     - uses: actions/checkout@v2
