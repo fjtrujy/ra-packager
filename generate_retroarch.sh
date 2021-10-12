@@ -10,6 +10,6 @@ cd RetroArch || { exit 1; }
 make -f Makefile.orbis clean all oelf eboot || { exit 1; }
 
 ## Rename and copy elf
-cp homebrew.self ../RA/cores/$2.PBP
+cp homebrew.self ../RA/cores/$2.self
 
 cd .. || { exit 1; }

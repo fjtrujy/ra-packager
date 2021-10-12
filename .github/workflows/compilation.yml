@@ -18,14 +18,14 @@ jobs:
         docker_owner: [orbisdev]
         core_opts: [
           [gambatte-libretro, gambatte_libretro_orbis],
-          # [libretro-prboom, prboom_libretro_psp1],
-          # [libretro-samples, test_libretro_psp1],
-          # [picodrive, picodrive_libretro_psp1],
-          # [ecwolf, ecwolf_libretro_psp1],
-          # [snes9x2002, snes9x2002_libretro_psp1],
-          # [libretro-lutro, lutro_libretro_psp1],
-          # [gpsp, gpsp_libretro_psp1],
-          # [libretro-fceumm, fceumm_libretro_psp1],
+          [libretro-samples, test_libretro_orbis],
+          # [libretro-prboom, prboom_libretro_orbis],
+          # [picodrive, picodrive_libretro_orbis],
+          # [ecwolf, ecwolf_libretro_orbis],
+          # [snes9x2002, snes9x2002_libretro_orbis],
+          # [libretro-lutro, lutro_libretro_orbis],
+          # [gpsp, gpsp_libretro_orbis],
+          # [libretro-fceumm, fceumm_libretro_orbis],
          ]
 
     container: ${{ matrix.docker_owner }}/orbisdev:latest

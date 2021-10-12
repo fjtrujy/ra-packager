@@ -20,6 +20,6 @@ make -j $PROC_NR platform=psp1 clean || { exit 1; }
 make -j $PROC_NR platform=psp1 || { exit 1; }
 
 # Trick needed for having subfolders
-cp ecwolf_libretro_psp1.a ../../ecwolf_libretro_psp1.a
+cp ecwolf_libretro_orbis.a ../../ecwolf_libretro_orbis.a
 
 cd ../../../ || { exit 1; }
