@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [orbisdev, orbisdev]
+        docker_owner: [orbisdev]
         core_opts: [
           [gambatte-libretro, gambatte_libretro_orbis],
           # [libretro-prboom, prboom_libretro_psp1],
@@ -91,7 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [orbisdev, orbisdev]
+        docker_owner: [orbisdev]
 
     steps:
     - uses: actions/checkout@v2
