@@ -34,7 +34,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        apk add build-base git bash
+        apk add build-base git bash python2
     
     - name: Compile project
       run: |
