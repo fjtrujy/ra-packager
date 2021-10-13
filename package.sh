@@ -21,6 +21,10 @@
 ./cores/blueMSX-libretro.sh || { exit 1; }
 ./generate_retroarch.sh blueMSX-libretro bluemsx_libretro_orbis || { exit 1; }
 
+#fmsx-libretro
+./cores/fmsx-libretro.sh || { exit 1; }
+./generate_retroarch.sh fmsx-libretro fmsx_libretro_orbis || { exit 1; }
+
 # #picodrive
 # ./cores/picodrive.sh || { exit 1; }
 # ./generate_retroarch.sh picodrive picodrive_libretro_orbis || { exit 1; }
