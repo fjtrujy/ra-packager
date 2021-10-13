@@ -5,9 +5,9 @@
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
 ## Download the source code.
-REPO_URL="https://github.com/fjtrujy/ecwolf"
-REPO_FOLDER="ecwolf"
-BRANCH_NAME="ps2"
+REPO_URL="https://github.com/fjtrujy/blueMSX-libretro"
+REPO_FOLDER="blueMSX-libretro"
+BRANCH_NAME="orbis"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --recurse-submodules --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
 else
@@ -15,11 +15,7 @@ else
 fi
 
 ## Compile core
-cd src/libretro || { exit 1; }
 make -j $PROC_NR platform=orbis clean || { exit 1; }
 make -j $PROC_NR platform=orbis || { exit 1; }
 
-# Trick needed for having subfolders
-cp ecwolf_libretro_orbis.a ../../ecwolf_libretro_orbis.a
-
-cd ../../../ || { exit 1; }
+cd .. || { exit 1; }

@@ -16,7 +16,7 @@ fi
 
 
 ## Compile core
-make -j $PROC_NR platform=psp1 clean  || { exit 1; }
-make -j $PROC_NR platform=psp1 || { exit 1; }
+make -j $PROC_NR platform=orbis clean  || { exit 1; }
+make -j $PROC_NR platform=orbis || { exit 1; }
 
 cd .. || { exit 1; }

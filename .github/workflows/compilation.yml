@@ -19,6 +19,7 @@ jobs:
         core_opts: [
           [gambatte-libretro, gambatte_libretro_orbis],
           [libretro-samples, test_libretro_orbis],
+          [blueMSX-libretro, bluemsx_libretro_orbis],
           # [libretro-prboom, prboom_libretro_orbis],
           # [picodrive, picodrive_libretro_orbis],
           # [ecwolf, ecwolf_libretro_orbis],

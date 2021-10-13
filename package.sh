@@ -11,11 +11,15 @@
 
 # gambatte-libretro
 ./cores/gambatte-libretro.sh || { exit 1; }
-./generate_retroarch.sh gambatte-prboom gambatte_libretro_orbis || { exit 1; }
+./generate_retroarch.sh gambatte-libretro gambatte_libretro_orbis || { exit 1; }
 
 #libretro-samples
 ./cores/libretro-samples.sh || { exit 1; }
 ./generate_retroarch.sh libretro-samples test_libretro_orbis || { exit 1; }
+
+#blueMSX-libretro
+./cores/blueMSX-libretro.sh || { exit 1; }
+./generate_retroarch.sh blueMSX-libretro bluemsx_libretro_orbis || { exit 1; }
 
 # #picodrive
 # ./cores/picodrive.sh || { exit 1; }
