@@ -6,5 +6,5 @@ cd RetroArch || { exit 1; }
 ## Compile RABOOT
 make -f Makefile.psp1.salamander clean all || { exit 1; }
 cp EBOOT.PBP ../RA/EBOOT.PBP || { exit 1; }
-cp PARAM.SFO ../RA/PARAM.SFO || { exit 1; }
+cp kernel_functions.prx ../RA/kernel_functions.prx || { exit 1; }
 cd .. || { exit 1; }
