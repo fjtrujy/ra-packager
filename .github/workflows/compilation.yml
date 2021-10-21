@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [pspdev, fjtrujy]
+        docker_owner: [fjtrujy]
         core_opts: [
           [libretro-prboom, prboom_libretro_psp1],
           [libretro-samples, test_libretro_psp1],
