@@ -27,7 +27,7 @@ jobs:
           [libretro-fceumm, fceumm_libretro_psp1],
          ]
 
-    container: ${{ matrix.docker_owner }}/pspsdk:latest
+    container: ${{ matrix.docker_owner }}/pspdev:latest
     steps:
     - uses: actions/checkout@v2
 
