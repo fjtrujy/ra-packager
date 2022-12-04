@@ -4,6 +4,6 @@
 cd RetroArch || { exit 1; }
 
 ## Compile RABOOT
-make -f Makefile.ps2.salamander release || { exit 1; }
+make -f Makefile.ps2.salamander -j $PROC_NR release || { exit 1; }
 cp raboot.elf ../RA/raboot.elf || { exit 1; }
 cd .. || { exit 1; }
