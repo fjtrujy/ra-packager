@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [ps2dev, fjtrujy]
+        docker_owner: [ps2dev]
         core_opts: [
           [libretro-prboom, prboom_libretro_ps2],
           [libretro-samples, test_libretro_ps2],
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [ps2dev, fjtrujy]
+        docker_owner: [ps2dev]
 
     container: ${{ matrix.docker_owner }}/ps2dev:latest
     steps:
@@ -110,7 +110,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [ps2dev, fjtrujy]
+        docker_owner: [ps2dev]
 
     steps:
     - uses: actions/checkout@v3
