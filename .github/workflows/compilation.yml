@@ -40,7 +40,6 @@ jobs:
       run: |
         git clone https://github.com/fjtrujy/ps2_drivers.git
         cd ps2_drivers
-        git checkout filesystem_driver
         make -j $(getconf _NPROCESSORS_ONLN) clean
         make -j $(getconf _NPROCESSORS_ONLN)
         make -j $(getconf _NPROCESSORS_ONLN) install
@@ -83,7 +82,6 @@ jobs:
       run: |
         git clone https://github.com/fjtrujy/ps2_drivers.git
         cd ps2_drivers
-        git checkout filesystem_driver
         make -j $(getconf _NPROCESSORS_ONLN) clean
         make -j $(getconf _NPROCESSORS_ONLN)
         make -j $(getconf _NPROCESSORS_ONLN) install
