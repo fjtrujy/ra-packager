@@ -17,9 +17,9 @@
 ./cores/picodrive.sh || { exit 1; }
 ./generate_retroarch.sh picodrive picodrive_libretro_ps2 || { exit 1; }
 
-#ecwolf
-./cores/ecwolf.sh || { exit 1; }
-./generate_retroarch.sh ecwolf ecwolf_libretro_ps2 || { exit 1; }
+#gambatte-libretro.sh
+./cores/gambatte-libretro.sh || { exit 1; }
+./generate_retroarch.sh gambatte-libretro gambatte_libretro_ps2 || { exit 1; }
 
 #snes9x2002
 ./cores/snes9x2002.sh || { exit 1; }

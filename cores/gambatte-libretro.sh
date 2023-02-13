@@ -5,8 +5,8 @@
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
 ## Download the source code.
-REPO_URL="https://github.com/libretro/ecwolf"
-REPO_FOLDER="ecwolf"
+REPO_URL="https://github.com/libretro/gambatte-libretro"
+REPO_FOLDER="gambatte-libretro"
 BRANCH_NAME="master"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --recurse-submodules --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
@@ -15,11 +15,7 @@ else
 fi
 
 ## Compile core
-cd src/libretro || { exit 1; }
-make -j $PROC_NR platform=ps2 clean || { exit 1; }
-make -j $PROC_NR platform=ps2 || { exit 1; }
+make -f Makefile.libretro -j $PROC_NR platform=ps2 clean || { exit 1; }
+make -f Makefile.libretro -j $PROC_NR platform=ps2 || { exit 1; }
 
-# Trick needed for having subfolders
-cp ecwolf_libretro_ps2.a ../../ecwolf_libretro_ps2.a
-
-cd ../../../ || { exit 1; }
+cd .. || { exit 1; }
