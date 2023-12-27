@@ -104,10 +104,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Fix a header file
-      run: |
-        sed -i 's/^\(\s*typedef\s*unsigned int\s*jbtype128\s*__attribute__((\s*mode(TI)\s*));\)/    typedef unsigned int jbtype128 __attribute__((mode(TI))) __attribute__((aligned(16)));/' ${PS2DEV}/ee/mips64r5900el-ps2-elf/include/machine/setjmp.h
-
     - name: Compile project
       run: |
         ./prepare_release.sh
