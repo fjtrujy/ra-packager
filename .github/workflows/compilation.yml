@@ -15,8 +15,13 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-    - name: Print clang version
+  
+    - name: Print Xcode 15 (latest stable) clang version
       run: |
         clang --version
-
+  
+    - name: Print Xcode 16 clang version
+      run: |
+        sudo xcode-select -switch /Applications/Xcode_16.0.app
+        clang --version
     
