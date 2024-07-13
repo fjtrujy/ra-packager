@@ -5,9 +5,9 @@
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
 ## Download the source code.
-REPO_URL="https://github.com/fjtrujy/gpsp"
+REPO_URL="https://github.com/libretro/gpsp"
 REPO_FOLDER="gpsp"
-BRANCH_NAME="psp"
+BRANCH_NAME="master"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --recurse-submodules --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
 else

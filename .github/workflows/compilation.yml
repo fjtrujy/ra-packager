@@ -15,21 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [fjtrujy]
+        docker_owner: [pspdev]
         core_opts: [
           [libretro-prboom, prboom_libretro_psp1],
           [libretro-samples, test_libretro_psp1],
           [picodrive, picodrive_libretro_psp1],
-          [ecwolf, ecwolf_libretro_psp1],
           [snes9x2002, snes9x2002_libretro_psp1],
-          [libretro-lutro, lutro_libretro_psp1],
           [gpsp, gpsp_libretro_psp1],
           [libretro-fceumm, fceumm_libretro_psp1],
          ]
 
     container: ${{ matrix.docker_owner }}/pspdev:latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install dependencies
       run: |
@@ -48,7 +46,7 @@ jobs:
 
     - name: Upload artifacts
       if: ${{ success() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
         path: RA/
@@ -58,11 +56,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [pspdev, fjtrujy]
+        docker_owner: [pspdev]
 
-    container: ${{ matrix.docker_owner }}/pspsdk:latest
+    container: ${{ matrix.docker_owner }}/pspdev:latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install dependencies
       run: |
@@ -80,7 +78,7 @@ jobs:
 
     - name: Upload artifacts
       if: ${{ success() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
         path: RA/
@@ -90,10 +88,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_owner: [pspdev, fjtrujy]
+        docker_owner: [pspdev]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Compile project
       run: |
@@ -106,7 +104,7 @@ jobs:
 
     - name: Upload artifacts
       if: ${{ success() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
         path: RA/
