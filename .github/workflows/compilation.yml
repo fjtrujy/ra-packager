@@ -60,6 +60,7 @@ jobs:
     strategy:
       matrix:
         docker_owner: [ps2dev]
+      fail-fast: false
 
     container: ${{ matrix.docker_owner }}/ps2dev:latest
     steps:
