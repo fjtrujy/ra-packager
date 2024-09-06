@@ -5,8 +5,8 @@
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
 ## Download the source code.
-REPO_URL="https://github.com/libretro/picodrive"
-REPO_FOLDER="picodrive"
+REPO_URL="https://github.com/libretro/stella2014-libretro"
+REPO_FOLDER="stella2014-libretro"
 BRANCH_NAME="master"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --recurse-submodules --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
@@ -15,7 +15,7 @@ else
 fi
 
 ## Compile core
-make -f Makefile.libretro -j $PROC_NR platform=ps2 clean || { exit 1; }
-make -f Makefile.libretro  -j $PROC_NR platform=ps2 || { exit 1; }
+make -f Makefile -j $PROC_NR platform=ps2 clean || { exit 1; }
+make -f Makefile  -j $PROC_NR platform=ps2 || { exit 1; }
 
 cd .. || { exit 1; }
