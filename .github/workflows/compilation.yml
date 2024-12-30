@@ -29,6 +29,7 @@ jobs:
           [stella2014-libretro, stella2014_libretro_ps2],
           [libretro-cap32, cap32_libretro_ps2],
          ]
+      fail-fast: false
 
     container: ${{ matrix.docker_owner }}/ps2dev:latest
     steps:
