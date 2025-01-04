@@ -5,7 +5,7 @@
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
 ## Download the source code.
-REPO_URL="https://github.com/fjtrujy/libretro-cap32"
+REPO_URL="https://github.com/libretro/libretro-cap32"
 REPO_FOLDER="libretro-cap32"
 BRANCH_NAME="8bpp"
 if test ! -d "$REPO_FOLDER"; then
