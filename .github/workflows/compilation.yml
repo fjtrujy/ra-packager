@@ -28,6 +28,7 @@ jobs:
           [libretro-fceumm, fceumm_libretro_ps2],
           [stella2014-libretro, stella2014_libretro_ps2],
           [libretro-cap32, cap32_libretro_ps2],
+          [QuickNES_Core, quicknes_libretro_ps2],
          ]
       fail-fast: false
 
