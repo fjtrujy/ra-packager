@@ -61,9 +61,9 @@ jobs:
 
     - name: Upload artifacts
       if: ${{ success() }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
+        name: core-${{ matrix.core_opts[0] }}-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
         path: RA/
 
 
@@ -102,9 +102,9 @@ jobs:
 
     - name: Upload artifacts
       if: ${{ success() }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
+        name: salamander-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
         path: RA/
 
 
@@ -128,9 +128,50 @@ jobs:
 
     - name: Upload artifacts
       if: ${{ success() }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: RA-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
+        name: core-info-${{ matrix.docker_owner }}-${{ steps.slug.outputs.sha8 }}
         path: RA/
+
+  combine-artifacts:
+    needs: [cores, libretro-salamander, libretro-info-core]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get short SHA
+        id: slug
+        run: echo "sha8=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_OUTPUT
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: "*-${{ steps.slug.outputs.sha8 }}"
+          merge-multiple: true
+
+      - name: Create final artifact
+        run: |
+          mkdir -p final-artifact
+          cp -r artifacts/* final-artifact/
+
+      - name: Upload final artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RA-combined-${{ steps.slug.outputs.sha8 }}
+          path: final-artifact/
+
+      - name: Delete core artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: "core-*-*-${{ steps.slug.outputs.sha8 }}"
+
+      - name: Delete salamander artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: "salamander-*-${{ steps.slug.outputs.sha8 }}"
+
+      - name: Delete core-info artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: "core-info-*-${{ steps.slug.outputs.sha8 }}"
 
     
